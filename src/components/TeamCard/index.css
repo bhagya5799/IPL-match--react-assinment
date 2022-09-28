@@ -1,0 +1,18 @@
+/* Write your CSS here */
+.TeamCard-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 26rem;
+    border: 1px solid gray;
+    border-color: white;
+    padding: 1rem;
+    background-color: #ffffff33;
+    border-radius: 10px;
+}
+.teamUrl{
+    height: 5rem;
+}
+.name{
+    color: white;
+}

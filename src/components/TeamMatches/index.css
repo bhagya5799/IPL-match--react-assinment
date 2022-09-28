@@ -1,0 +1,5 @@
+/* Write your CSS here */
+.TeamMatches-container{
+    background-image: linear-gradient(to bottom, rgb(189, 43, 43) ,black);
+    height: 100vh;
+}
