@@ -3,6 +3,7 @@ import {Component} from 'react'
 import LatestMatch from '../LatestMatch'
 
 import './index.css'
+import MatchCard from '../MatchCard'
 
 class TeamMatches extends Component {
   state = {
@@ -14,32 +15,40 @@ class TeamMatches extends Component {
   }
 
   getDetailsIpl = async () => {
-    console.log(this.props)
     const {match} = this.props
     const {params} = match
     const {id} = params
     const response = await fetch(`https://apis.ccbp.in/ipl/${id}`)
     const data = await response.json()
-    console.log(data)
     const updateData = {
-      name: data.name,
-      id: data.id,
-      teamImageUrl: data.team_image_url,
+      latestMatchDetails: data.latest_match_details,
+      recentMatches: data.recent_matches,
+      teamBannerUrl: data.team_banner_url,
     }
     this.setState({iplDetails: updateData})
+    console.log('data', data)
   }
 
   render() {
-    const {teamImageUrl, iplDetails} = this.state
+    const {iplDetails} = this.state
+    console.log('kk', iplDetails)
+    const {recentMatches, teamBannerUrl, latestMatchDetails} = iplDetails
     return (
-      <div className="TeamMatches-container">
+      <ul className="TeamMatches-container">
         <div>
-          <img src={teamImageUrl} />
+          <img src={teamBannerUrl} className="teambanner" alt="team banner" />
         </div>
-        {iplDetails.map(eachItem => (
-          <LatestMatch details={eachItem} />
-        ))}
-      </div>
+        <p className="latest-match-title">LatestMatch</p>
+        <ul className="latest-match-details">
+          <LatestMatch details={latestMatchDetails} />
+        </ul>
+        <ul className="match-card-item-list">
+          {recentMatches &&
+            recentMatches.map(match => (
+              <MatchCard details={match} key={recentMatches.result} />
+            ))}
+        </ul>
+      </ul>
     )
   }
 }

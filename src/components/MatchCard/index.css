@@ -1,1 +1,36 @@
 /* Write your CSS here */
+.matchCard-container{
+   background-color: black;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   height: 25rem;
+   width: 18rem;
+   gap: 2rem;
+   /* border: 1px solid gray; */
+   margin-top: 2rem;
+   /* padding-top: 3rem; */
+   border-radius: 10px;
+   font-family: Bree sans-serif;
+   
+
+}
+.c-team-logo{
+    height: 7rem;
+    width: 7rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.result-details{
+
+    text-align: center;
+}
+.green{
+    color: green;
+
+}
+.red{
+    color: red;
+}

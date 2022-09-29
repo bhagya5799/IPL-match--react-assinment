@@ -7,10 +7,12 @@ const TeamCard = props => {
   const {details} = props
   const {name, id, teamImageUrl} = details
   return (
-    <div className="TeamCard-container">
-      <img src={teamImageUrl} className="teamUrl" />
-      <h1 className="name">{name}</h1>
-    </div>
+    <Link to={`/team-matches/${id}`}>
+      <li className="TeamCard-container">
+        <img src={teamImageUrl} className="teamUrl" alt={name} />
+        <p className="name">{name}</p>
+      </li>
+    </Link>
   )
 }
 export default TeamCard

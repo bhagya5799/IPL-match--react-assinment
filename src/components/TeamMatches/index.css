@@ -1,5 +1,27 @@
 /* Write your CSS here */
 .TeamMatches-container{
     background-image: linear-gradient(to bottom, rgb(189, 43, 43) ,black);
-    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.teambannerUrl{
+    width: 100%;
+    height: 50vh;
+}
+.latest-match-details{
+    padding: 3rem;
+    border: 4px solid rgb(183, 199, 38);
+    /* margin-top: 3rem; */
+}
+.latest-match-title{
+    color: white;
+    margin-top: 3rem;
+}
+.match-card-item-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
 }

@@ -15,6 +15,7 @@ class Home extends Component {
   }
 
   iplMatchFunction = async () => {
+    const {iplMatchList} = this.state
     const response = await fetch('https://apis.ccbp.in/ipl')
     const data = await response.json()
     const updatedData = data.teams.map(eachItem => ({
@@ -23,12 +24,13 @@ class Home extends Component {
       teamImageUrl: eachItem.team_image_url,
     }))
     this.setState({iplMatchList: updatedData, isIplMatch: false})
+    console.log('IDS', data.teams)
   }
 
   render() {
-    const {iplMatchList, id} = this.state
+    const {iplMatchList} = this.state
     return (
-      <Link to={`/MaTches/${id}`} className="router-link-items">
+      <>
         <li className="home-container">
           <div className="ipl-logo-title-container">
             <img
@@ -38,13 +40,15 @@ class Home extends Component {
             />
             <h1 className="ipl-dashBoard-title">IPL DashBoard</h1>
           </div>
-          <ul>
-            {iplMatchList.map(eachItem => (
-              <TeamCard details={eachItem} key={eachItem.id} />
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {iplMatchList.map(eachItem => (
+                <TeamCard details={eachItem} key={eachItem.id} />
+              ))}
+            </ul>
+          </div>
         </li>
-      </Link>
+      </>
     )
   }
 }
