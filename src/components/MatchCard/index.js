@@ -7,7 +7,7 @@ const MatchCard = props => {
   const {updateData} = details
   const res = details.match_status
   console.log(res, 'liu')
-  const styleRes = res === true ? 'green' : 'red'
+  const styleRes = res === 'Won' ? 'green' : 'red'
 
   return (
     <li className="matchCard-container">
@@ -18,7 +18,7 @@ const MatchCard = props => {
       />
       <p>{details.competing_team}</p>
       <p className="result-details">{details.result}</p>
-      <p>{res}</p>
+      <p className={styleRes}>{res}</p>
     </li>
   )
 }

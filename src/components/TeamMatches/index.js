@@ -1,7 +1,7 @@
 // Write your code here
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 import LatestMatch from '../LatestMatch'
-
 import './index.css'
 import MatchCard from '../MatchCard'
 
@@ -33,19 +33,23 @@ class TeamMatches extends Component {
     const {iplDetails} = this.state
     console.log('kk', iplDetails)
     const {recentMatches, teamBannerUrl, latestMatchDetails} = iplDetails
+    console.log('recent', recentMatches)
     return (
       <ul className="TeamMatches-container">
-        <div>
-          <img src={teamBannerUrl} className="teambanner" alt="team banner" />
-        </div>
+        <img src={teamBannerUrl} className="teambanner" alt="team banner" />
         <p className="latest-match-title">LatestMatch</p>
+        {!teamBannerUrl && (
+          <div testid="loader">
+            <Loader color="white" type="TailSpin" />
+          </div>
+        )}
         <ul className="latest-match-details">
           <LatestMatch details={latestMatchDetails} />
         </ul>
         <ul className="match-card-item-list">
           {recentMatches &&
             recentMatches.map(match => (
-              <MatchCard details={match} key={recentMatches.result} />
+              <MatchCard details={match} key={match.id} />
             ))}
         </ul>
       </ul>
